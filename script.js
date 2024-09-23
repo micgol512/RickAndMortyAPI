@@ -17,29 +17,35 @@ async function loadCharacters() {
   }
   try {
     const req = await fetch(`${BASE_URL}?${_name}${_status}${_page}`);
-
     if (!req.ok) {
       charsWrapper.innerHTML = "No items to display";
       accPage = 1;
       lastPage = 1;
       actualPage.innerHTML = `${accPage} from ${lastPage}`;
-      loadCharacters();
       return;
     }
-
     const characters = await req.json();
     lastPage = characters.info.pages;
     actualPage.innerHTML = `${accPage} from ${lastPage}`;
     charsWrapper.innerHTML = "";
     characters.results.forEach(({ name, status, species, image }) => {
       const card = document.createElement("div");
+      const img = document.createElement("img");
+      const nameHeader = document.createElement("h4");
+      const charInfo = document.createElement("div");
+      const charStatus = document.createElement("span");
+      const charSpecies = document.createElement("span");
+
       card.className = "card";
-      card.innerHTML += `
-        <img src="${image}" alt="${name}"/>
-        <h4>${name}</h4>
-        <div class="char-info">
-        <span>Status: ${status}</span>
-        <span>Species: ${species}</span></div>`;
+      img.src = image;
+      img.alt = name;
+      nameHeader.innerHTML = name;
+      charInfo.className = "char-info";
+      charStatus.innerHTML = `Status: ${status}`;
+      charSpecies.innerHTML = `Species: ${species}`;
+
+      charInfo.append(charStatus, charSpecies);
+      card.append(img, nameHeader, charInfo);
       charsWrapper.append(card);
     });
   } catch (err) {
@@ -75,4 +81,17 @@ function lastsPage() {
   loadCharacters();
 }
 
-document.addEventListener("DOMContentLoaded", loadCharacters);
+document.addEventListener("DOMContentLoaded", () => {
+  loadCharacters();
+  document.getElementById("input-name").addEventListener("input", () => {
+    accPage = 1;
+    loadCharacters();
+  });
+  document.getElementById("radio-alive").addEventListener("change", loadCharacters);
+  document.getElementById("radio-dead").addEventListener("change", loadCharacters);
+  document.getElementById("radio-unknown").addEventListener("change", loadCharacters);
+  document.getElementById("first-page-btn").addEventListener("click", firstPage);
+  document.getElementById("prev-page-btn").addEventListener("click", prevPage);
+  document.getElementById("next-page-btn").addEventListener("click", nextPage);
+  document.getElementById("last-page-btn").addEventListener("click", lastsPage);
+});

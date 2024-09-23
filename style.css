@@ -46,22 +46,14 @@ body {
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-input[type="button"] {
+button {
   width: auto;
   cursor: pointer;
   padding: 0 10px;
 }
-input[type="button"]:active {
-  scale: 0.95s;
+button:active {
+  scale: 0.9s;
 }
-/* #character-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-template-rows: 230px;
-  grid-gap: 15px;
-  width: min(90%, 1920px);
-  padding: 20px 0;
-} */
 #character-wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -94,12 +86,10 @@ input[type="button"]:active {
   object-fit: cover;
   border-radius: 8px;
 }
-
 .card h4 {
   font-size: 1rem;
   margin: 5px 0;
 }
-
 .char-info {
   width: 100%;
   padding: 0 5px;

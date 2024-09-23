@@ -7,84 +7,23 @@
   </head>
   <body>
     <div id="search-wrapper">
-      <input
-        type="text"
-        id="input-name"
-        class="inputs"
-        placeholder="Search by name"
-        oninput="loadCharacters()"
-      />
+      <input type="text" id="input-name" class="inputs" placeholder="Search by name" />
       <div id="radio-wrapper">
         <label for="alive">Alive</label>
-        <input
-          type="radio"
-          name="status"
-          id="radio-alive"
-          value="alive"
-          checked
-          onchange="loadCharacters()"
-        />
-        <label for="dead">Dead</label
-        ><input
-          type="radio"
-          name="status"
-          id="radio-dead"
-          value="dead"
-          onchange="loadCharacters()"
-        />
-        <label for="unknown">Unknown</label
-        ><input
-          type="radio"
-          name="status"
-          id="radio-unknown"
-          value="unknown"
-          onchange="loadCharacters()"
-        />
+        <input type="radio" name="status" id="radio-alive" value="alive" checked />
+        <label for="dead">Dead</label>
+        <input type="radio" name="status" id="radio-dead" value="dead" />
+        <label for="unknown">Unknown</label>
+        <input type="radio" name="status" id="radio-unknown" value="unknown" />
       </div>
     </div>
-    <div id="character-wrapper">
-      <!-- <div class="card">
-        <img
-          src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-          alt=""
-        />
-        <h4>Rick Sanchez</h4>
-        <div class="char-info">
-          <span>Status: Alive</span>
-          <span>Gatunek: Human</span>
-        </div>
-      </div> -->
-    </div>
+    <div id="character-wrapper"></div>
     <div id="paggination-wrapper">
-      <input
-        id="prev-btn"
-        type="button"
-        class="inputs"
-        value="<<"
-        onclick="firstPage()"
-      />
-      <input
-        id="prev-btn"
-        type="button"
-        class="inputs"
-        value="<"
-        onclick="prevPage()"
-      />
+      <button id="first-page-btn" type="button" class="inputs"><<</button>
+      <button id="prev-page-btn" type="button" class="inputs"><</button>
       <span id="acc-page">1</span>
-      <input
-        id="next-btn"
-        type="button"
-        class="inputs"
-        value=">"
-        onclick="nextPage()"
-      />
-      <input
-        id="next-btn"
-        type="button"
-        class="inputs"
-        value=">>"
-        onclick="lastsPage()"
-      />
+      <button id="next-page-btn" type="button" class="inputs">></button>
+      <button id="last-page-btn" type="button" class="inputs">>></button>
     </div>
     <script src="script.js"></script>
   </body>
